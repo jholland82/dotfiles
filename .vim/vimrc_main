@@ -1,0 +1,102 @@
+" Cross-platform Vim Configuration goes in this file
+"
+" Contents
+" Main configuration
+" Visual Configuration
+" Shortcut Key Configuration
+" Plugin Configuration
+
+" ----------- Main Configuration ----------------------------------
+
+source ~/.vim/vundle.vim
+
+set nocompatible                         "don't need to keep compatibility with Vi
+filetype plugin indent on                "enable detection, plugins and indenting in one step
+syntax on                                "Turn on syntax highlighting
+set ruler                                "Turn on the ruler
+set number                               "Show line numbers
+set cursorline                           "underline the current line in the file
+set cursorcolumn                         "highlight the current column. Visible in GUI mode only.
+set colorcolumn=121
+set laststatus=2
+
+set background=dark                      "make vim use colors that look good on a dark background
+
+set showcmd                              "show incomplete cmds down the bottom
+set showmode                             "show current mode down the bottom
+set foldenable                           "enable folding
+set showmatch                            "set show matching parenthesis
+set noexrc                               "don't use the local config
+"set virtualedit=all                      "allow the cursor to go in to "invalid" places
+"
+set incsearch                            "find the next match as we type the search
+set hlsearch                             "hilight searches by default
+set ignorecase                           "ignore case when searching
+
+set shiftwidth=4                         "number of spaces to use in each autoindent step
+set tabstop=4                            "two tab spaces
+"set softtabstop=4                        "number of spaces to skip or insert when <BS>ing or <Tab>ing
+set expandtab                            "spaces instead of tabs for better cross-editor compatibility
+set smarttab                             "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
+set shiftround                           "when at 3 spaces, and I hit > ... go to 4, not 5
+set nowrap                               "no wrapping
+
+set backspace=indent,eol,start           "allow backspacing over everything in insert mode
+set cindent                              "recommended seting for automatic C-style indentation
+set autoindent                           "automatic indentation in non-C files
+set copyindent                           "copy the previous indentation on autoindenting
+
+set noerrorbells                         "don't make noise
+set visualbell
+set wildmenu                             "make tab completion act more like bash
+set wildmode=list:longest                "tab complete to longest common string, like bash
+set wildignore+=*.class,.git,.hg,.svn,test-integration/**,test-unit/**,**/target/**,**/build/**
+
+"set mouse-=a                             "disable mouse automatically entering visual mode
+set mouse=a                              "enable mouse automatically entering visual mode
+set hidden                               "allow hiding buffers with unsaved changes
+set cmdheight=2                          "make the command line a little taller to hide 'press enter to viem more' text
+
+set clipboard=unnamed                    "Use system clipboard by default
+
+" Set up the backup directories to a central place.
+" set backupdir=$HOME/tmp        
+" set directory=$HOME/tmp
+                                         
+" ----------- Visual Configuration ----------------------------------
+"set t_Co=256
+colorscheme solarized 
+
+" ----------- Shortcut Key Configuration ----------------------------------
+let mapleader = ","                      "remap leader to ',' which is much easier than '\'
+
+"Switch to previous file with ',,'
+nmap <leader><leader> <C-^>
+nmap <leader>l <C-w>l
+nmap <leader>h <C-w>h
+nmap <leader>k <C-w>k
+nmap <leader>j <C-w>j
+nmap <leader>= 8<C-w>>
+nmap <leader>- 8<C-w><
+
+map <Leader>d :NERDTree<CR>
+" ctags
+map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=.svn --verbose=yes * <CR>
+
+" Exit insert mode and save with jj
+imap jj <Esc>:w<CR>
+
+" Supports pasting in from the clipboard
+set pastetoggle=<F2>
+
+" Turn text search highlight on/off with F5 key
+map <F3> :set hls!<bar>set hls?<CR>
+
+" Spell check toggle
+map <leader>sp :setlocal spell! spelllang=en_us<CR>
+
+"Remove spaces at the end of lines
+command! RemoveEndSpaces :silent %s/ \+$//g
+au BufNewFile,BufRead *.gradle setf groovy
+au BufNewFile,BufRead *.groovy setf groovy
+au BufNewFile,BufRead *.gsp setf groovy
