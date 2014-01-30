@@ -67,38 +67,20 @@ set clipboard=unnamed                    "Use system clipboard by default
 "set t_Co=256
 colorscheme solarized 
 
-" ----------- Shortcut Key Configuration ----------------------------------
-let mapleader = ","                      "remap leader to ',' which is much easier than '\'
-
-"Switch to previous file with ',,'
-nmap <leader><leader> <C-^>
-nmap <leader>l <C-w>l
-nmap <leader>h <C-w>h
-nmap <leader>k <C-w>k
-nmap <leader>j <C-w>j
-nmap <leader>= 8<C-w>>
-nmap <leader>- 8<C-w><
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
-
-map <Leader>d :NERDTree<CR>
-" ctags
-map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=.svn --verbose=yes * <CR>
-
-" Exit insert mode and save with jj
-imap jj <Esc>:w<CR>
-
-" Supports pasting in from the clipboard
-set pastetoggle=<F2>
-
-" Turn text search highlight on/off with F5 key
-map <F3> :set hls!<bar>set hls?<CR>
-
-" Spell check toggle
-map <leader>sp :setlocal spell! spelllang=en_us<CR>
+source ~/.vim/keymap.vim
 
 "Remove spaces at the end of lines
 command! RemoveEndSpaces :silent %s/ \+$//g
 au BufNewFile,BufRead *.gradle setf groovy
 au BufNewFile,BufRead *.groovy setf groovy
 au BufNewFile,BufRead *.gsp setf groovy
+
+" Dispatch code execution
+noremap <Leader>rg :<C-U>Dispatch groovy '<C-R>=expand("%:p") <CR>'<CR>
+noremap <Leader>rr :<C-U>Dispatch ~/.vim/grails-gradle-test.sh '<C-R>=expand("%:t:r") <CR>'<CR>
+noremap <Leader>gtu :<C-U>Dispatch ./grailsw test-app -Duser.timezone=UTC unit: '<C-R>=expand("%:t:r") <CR>'<CR>
+noremap <Leader>gti :<C-U>Dispatch ./grailsw test-app -Duser.timezone=UTC integration: '<C-R>=expand("%:t:r") <CR>'<CR>
+noremap <Leader>gb :<C-U>Dispatch gradle build<CR>
+
+" JSON hilighting
+au BufRead,BufNewFile *.json set filetype=json

@@ -54,7 +54,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                                \ 'passive_filetypes': ['groovy'] }
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-", "invalid value \"{{"]
 let g:syntastic_groovy_checkers = ['codenarc']
-map <Leader>c :SyntasticCheck<CR>
 let g:syntastic_always_populate_loc_list=1
 
 "NeoComplCache
@@ -143,7 +142,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "let g:neocomplcache_enable_insert_char_pre = 1
 
 "NERDTree
-nmap <F6> :TagbarToggle<CR>
 let NERDTreeShowLineNumbers=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_open_on_console_startup=1
@@ -151,6 +149,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 "let NERDTreeQuitOnOpen = 1
 let NERDTreeShowHidden = 1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "CtrlP
 let g:ctrlp_working_path_mode = 0
@@ -164,7 +163,25 @@ let g:ctrlp_max_files = 40000
 let g:ctrlp_max_depth = 40
 let g:ctrlp_lazy_update = 1
 
-"Open CTRLP with current word prepopulated
-map <Leader>f :CtrlP<CR>
-nmap <Leader>p <C-p><C-\>w
-nmap <Leader>m :CtrlPMRUFiles<CR>
+"Tagbar
+let g:tagbar_type_groovy = {
+    \ 'ctagstype' : 'groovy',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'c:class',
+        \ 'i:interface',
+        \ 'f:function',
+        \ 'v:variables',
+    \ ]
+\ }
+
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
