@@ -78,6 +78,8 @@ nmap <leader>k <C-w>k
 nmap <leader>j <C-w>j
 nmap <leader>= 8<C-w>>
 nmap <leader>- 8<C-w><
+nnoremap <silent> ,z :bp<CR>
+nnoremap <silent> ,x :bn<CR>
 
 map <Leader>d :NERDTree<CR>
 " ctags
