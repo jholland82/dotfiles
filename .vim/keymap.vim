@@ -38,3 +38,5 @@ map <Leader>c :SyntasticCheck<CR>
 map <Leader>f :CtrlP<CR>
 nmap <Leader>p <C-p><C-\>w
 nmap <Leader>m :CtrlPMRUFiles<CR>
+map <F4> :.w !pbcopy<CR><CR>
+map <F5> :r !pbpaste<CR>

@@ -31,6 +31,8 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'groenewege/vim-less'
 Bundle 'aaronzirbes/grails-vim.git'
 Bundle 'techlivezheng/vim-plugin-minibufexpl'
+Bundle 'elzr/vim-json'
+Bundle 'vim-ruby/vim-ruby'
 
 let g:miniBufExplAutoStart = 1
 let g:miniBufExplBuffersNeeded = 1
