@@ -187,3 +187,6 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+
+"Ack settings to work with silver-searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
