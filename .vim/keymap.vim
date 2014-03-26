@@ -17,7 +17,7 @@ nnoremap <silent> ,x :bn<CR>
 " ----------- Plugin Keymappings ------------------------------------------
 map <Leader>d :NERDTree<CR>
 map <Leader>tag :TagbarToggle<CR>
-map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=.svn --verbose=yes * <CR>
+map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=.svn --exclude=node_modules --verbose=yes * <CR>
 map <Leader>git :Gitv<CR>
 
 " Exit insert mode and save with jj
