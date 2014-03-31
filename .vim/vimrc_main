@@ -8,6 +8,7 @@
 
 " ----------- Main Configuration ----------------------------------
 
+source ~/.vim/keymap.vim
 source ~/.vim/vundle.vim
 
 set shell=/bin/bash
@@ -35,7 +36,7 @@ set hlsearch                             "hilight searches by default
 set ignorecase                           "ignore case when searching
 
 set shiftwidth=4                         "number of spaces to use in each autoindent step
-set tabstop=4                            "two tab spaces
+set tabstop=4                            "four tab spaces
 "set softtabstop=4                        "number of spaces to skip or insert when <BS>ing or <Tab>ing
 set expandtab                            "spaces instead of tabs for better cross-editor compatibility
 set smarttab                             "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
@@ -51,7 +52,7 @@ set noerrorbells                         "don't make noise
 set visualbell
 set wildmenu                             "make tab completion act more like bash
 set wildmode=list:longest                "tab complete to longest common string, like bash
-set wildignore+=*.class,.git,.hg,.svn,test-integration/**,test-unit/**,**/target/**,**/build/**
+set wildignore+=*.class,.git,.hg,.svn,test-integration/**,test-unit/**,**/target/**,**/build/**,**/vendor/**,**/node_modules**
 
 "set mouse-=a                             "disable mouse automatically entering visual mode
 set mouse=a                              "enable mouse automatically entering visual mode
@@ -60,14 +61,12 @@ set cmdheight=2                          "make the command line a little taller 
 
 
 " Set up the backup directories to a central place.
-" set backupdir=$HOME/tmp        
-" set directory=$HOME/tmp
+set backupdir=$HOME/.vim/tmp        
+set directory=$HOME/.vim/tmp
                                          
 " ----------- Visual Configuration ----------------------------------
-"set t_Co=256
+set t_Co=256
 colorscheme solarized 
-
-source ~/.vim/keymap.vim
 
 "Remove spaces at the end of lines
 command! RemoveEndSpaces :silent %s/ \+$//g

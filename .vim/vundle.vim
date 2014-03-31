@@ -33,6 +33,7 @@ Bundle 'aaronzirbes/grails-vim.git'
 Bundle 'techlivezheng/vim-plugin-minibufexpl'
 Bundle 'elzr/vim-json'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'Shutnik/jshint2.vim'
 
 let g:miniBufExplAutoStart = 1
 let g:miniBufExplBuffersNeeded = 1
@@ -156,7 +157,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "CtrlP
 let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'rtscript']
-let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*\|.*/target/.*\|.*/build/.*|*.orig'
+let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*\|.*/target/.*\|.*/build/.*|*.orig/.*\|*/node_modules'
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v(build|target)$',
     \ 'file': '\v\.(orig|)$',
@@ -189,4 +190,25 @@ let g:tagbar_type_ruby = {
 \ }
 
 "Ack settings to work with silver-searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag --nogroup --column'
+
+let jshint2_read = 1
+let jshint2_save = 1
+let jshint2_confirm = 0
+
+" jshint validation
+nnoremap <silent><Leader><F1> :JSHint<CR>
+inoremap <silent><Leader><F1> <C-O>:JSHint<CR>
+vnoremap <silent><Leader><F1> :JSHint<CR>
+
+" show next jshint error
+nnoremap <silent><Leader><F2> :lnext<CR>
+inoremap <silent><Leader><F2> <C-O>:lnext<CR>
+vnoremap <silent><Leader><F2> :lnext<CR>
+
+" show previous jshint error
+nnoremap <silent><Leader><F3> :lprevious<CR>
+inoremap <silent><Leader><F3> <C-O>:lprevious<CR>
+vnoremap <silent><Leader><F3> :lprevious<CR>
+
+
