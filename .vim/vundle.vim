@@ -34,6 +34,7 @@ Bundle 'techlivezheng/vim-plugin-minibufexpl'
 Bundle 'elzr/vim-json'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Shutnik/jshint2.vim'
+Bundle 'zeis/vim-kolor'
 
 let g:miniBufExplAutoStart = 1
 let g:miniBufExplBuffersNeeded = 1

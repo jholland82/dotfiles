@@ -40,3 +40,9 @@ nmap <Leader>p <C-p><C-\>w
 nmap <Leader>m :CtrlPMRUFiles<CR>
 map <F4> :.w !pbcopy<CR><CR>
 map <F5> :r !pbpaste<CR>
+
+" Open Spec for current Class
+noremap <Leader>spec :<C-U>tag <C-R>=expand("<cword>") <CR>Spec<CR>
+
+" Change current directory for open file
+map <Leader>cdms :lcd ~/dev/bloomhealth/services/member<CR>

@@ -66,7 +66,7 @@ set directory=$HOME/.vim/tmp
                                          
 " ----------- Visual Configuration ----------------------------------
 set t_Co=256
-colorscheme solarized 
+colorscheme solarized
 
 "Remove spaces at the end of lines
 command! RemoveEndSpaces :silent %s/ \+$//g
@@ -81,5 +81,7 @@ noremap <Leader>gtu :<C-U>Dispatch ./grailsw test-app -Duser.timezone=UTC unit: 
 noremap <Leader>gti :<C-U>Dispatch ./grailsw test-app -Duser.timezone=UTC integration: '<C-R>=expand("%:t:r") <CR>'<CR>
 noremap <Leader>gb :<C-U>Dispatch gradle build<CR>
 
+" clean stacktraces
+nnoremap <Leader>st :<C-U>g/^\tat.*\.java.*/d<CR>:<C-U>g/^\tat.*(Unknown Source).*/d<CR>:<C-U>g/^\tat.*(Native Method).*/d<CR>
 " JSON hilighting
 au BufRead,BufNewFile *.json set filetype=json
